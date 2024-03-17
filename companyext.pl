@@ -76,10 +76,37 @@ superior(X,Y) :- supervise(X,Y).
 subordinate(X,Y) :- superior(Y,X).
 
 % Should you need to write new rules, please enter them here.
+query1(Employee) :-
+    female(Employee),
+    works_on(Employee, computerization, 10),
+    supervise(jennifer, Employee).
+
+query2(Employee) :-
+    department(Employee, research),
+    salary(Employee, Salary),
+    Salary > 40000.
+
+query3(Employee) :-
+    employee(Employee),
+    \+ supervise(_, Employee).
+
+query4(Employee) :-
+    works_on(Employee, productx, Hours),
+    Hours >= 20.
+
 
 %-------------------------------------------------------------
 % Queries
 % Write your queries here .
 
+%1
+?- query1(Employee).
 
+%2
+?- query2(Employee).
 
+%3
+?- query3(Employee).
+
+%4
+?- query4(Employee).
